@@ -4,6 +4,7 @@ const {
     webFrame,
     Menu
 } = require('electron');
+const fs = require('fs');
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
@@ -123,10 +124,10 @@ function createWindow() {
         template[3].submenu = [{
             label: 'Learn more',
             click() {
-                require('electron').shell.openExternal('https://github.com/FlorianFe/Elements')
+                require('electron').shell.openExternal('https://github.com/agomez314/periodic-table-electron')
             }
 
-        }]
+        }];
     }
 
     const menu = Menu.buildFromTemplate(template)

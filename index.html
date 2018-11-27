@@ -221,16 +221,21 @@
 
     <script type="text/javascript" src="jquery-3.3.1.js"></script>
     <script type="text/javascript" src="script.js"></script>
-    <script>
-        function updateTextInput(val) {
-            document.getElementById('textInput').value = val;
-        }
 
-        function updateTextInput1(val) {
-            document.getElementById('textInput1').value = val;
-        }
-    </script>
     <script>
+        const fs = require('fs');
+        fs.readFile('./periodic_table.json', (err, data) => {
+            if (err) throw err;
+            let parsedJson = JSON.parse(data);
+
+            const hydrogen = document.querySelectorAll('.element-1');
+            hydrogen.setAttribute('data-pos', parsedJson.atomic_number);
+            hydrogen.setAttribute('data-nb', parsedJson.atomic_weight);
+            hydrogen.innerHTML = parsedJson.symbol;
+            document.querySelectorAll('.element-1 span').innerHTML = paredJson.name;
+
+
+        })
         // Get the modal
         var modal = document.getElementById('myModal');
 
