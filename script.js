@@ -24,25 +24,59 @@ jQuery(document).ready(function($) {
     $(".element").click(function(event) {   //get the position of data
     var id= $(this).data('pos') -1;  
     
+    
     //alert(id);
     $.getJSON( 'PeriodicTableJSON.json', function(json ) {
         var items = [];
-        
         //cleae modal before
         $(".modal-content").empty();
         items.push("<span class='close' onclick='closemodal()'>&times;</span>");
+        if(id<56 || id>70)
+        {  
         items.push( "<h3>" + json.elements[id].name + "</h3>" );
         items.push( "<br/> <b>Atomic Mass:</b> " + json.elements[id].atomic_mass);
         items.push( "   </t> <b>Boiling Point:</b> " + json.elements[id].boil);
         items.push( "   </t> <b>Melting Point:</b> " + json.elements[id].melt);
+        items.push( "   <a target='-blank' href ="+json.elements[id].spectral_img+"> Image Link</a>");
         items.push( "<br/> <br/> <p>" + json.elements[id].summary+ "</p>" );
         $(".modal-content").append(items);
+        }
+        else{
+            
+            for(var i = 56; i<=70; i++)
+            {
+                items.push( "<h3>" + json.elements[i].name + "</h3>" );
+                items.push( "<br/> <b>Atomic Mass:</b> " + json.elements[i].atomic_mass);
+                items.push( "   </t> <b>Boiling Point:</b> " + json.elements[i].boil);
+                items.push( "   </t> <b>Melting Point:</b> " + json.elements[i].melt);
+                items.push( "   <a target='-blank' href ="+json.elements[id].spectral_img+"> Image Link</a>");
+                items.push( "<br/> <br/> <p>" + json.elements[i].summary+ "</p>" );
+                
+            }
+            $(".modal-content").append(items);
+        }
        });
+       
 
        $("#myModal").css({display: "block"});
-      
+    
+    
      
     });   
+
+
+    $(".button").click(function(event) {   //get the position of data
+        //alert("Here"); 
+        $.getJSON( 'PeriodicTableJSON.json', function(json ) {
+            var items = [];
+            
+
+        })
+
+
+    })
+
+
     });
 
    
