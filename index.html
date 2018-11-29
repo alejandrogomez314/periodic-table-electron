@@ -243,7 +243,7 @@
 
     <script>
         const fs = require('fs');
-        fs.readFile('./periodic_table.json', (err, data) => {
+        fs.readFile('./data/periodic_table_adjustedWeights.json', (err, data) => {
             if (err) throw err;
             let parsedJson = JSON.parse(data);
             let selector;
@@ -253,7 +253,7 @@
                 elementDiv = document.querySelector(selector);
 
                 if (elementDiv != null) {
-                    elementDiv.setAttribute('data-nb', parsedJson[i - 1].atomic_weight);
+                    elementDiv.setAttribute('data-nb', parsedJson[i - 1].atomic_weight1);
                     elementDiv.innerHTML = parsedJson[i - 1].symbol;
                 }
             }
@@ -309,7 +309,7 @@
 
         function queryElementData(matchingElement) {
             return new Promise((resolve, reject) => {
-                fs.readFile('./periodic_table.json', (err, data) => {
+                fs.readFile('./data/periodic_table_adjustedWeights.json', (err, data) => {
                     if (err) reject('Cannot not read the file');
                     let parsedJson = JSON.parse(data);
                     let queryVal;
