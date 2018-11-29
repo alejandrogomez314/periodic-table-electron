@@ -17,6 +17,10 @@ body {
     font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
 }
 
+ul {
+    list-style-type: none;
+}
+
 .wrapper {
     width: 1050px;
     margin: 30px auto;
@@ -225,9 +229,9 @@ body {
     background-color: #fefefe;
     margin: 15% auto;
     /* 15% from the top and centered */
-    padding: 20px;
+    padding: 50px;
     border: 1px solid #888;
-    width: 80%;
+    width: 500px;
     /* Could be more or less, depending on screen size */
 }
 
