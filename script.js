@@ -9,9 +9,11 @@
             selector = "li[data-pos='" + i + "']";
             elementDiv = document.querySelector(selector);
 
-            if (elementDiv != null) {
+            try {
                 elementDiv.setAttribute('data-nb', parsedJson[i - 1].atomic_weight1);
                 elementDiv.innerHTML = parsedJson[i - 1].symbol;
+            } catch (e) {
+                console.log(e);
             }
         }
     });
@@ -25,6 +27,7 @@
 
     // Get the  element that closes the modal
     var span = document.getElementsByClassName("close")[0];
+
 
     // When the user clicks on the button, open the modal 
     elementList.forEach(element => {
@@ -73,6 +76,7 @@
                 parsedJson.map(element => {
                     queryVal = element.atomic_number;
                     if (queryVal === matchingElement) {
+                        console.log(element);
                         resolve(element);
                     }
                 });
@@ -87,6 +91,7 @@
      */
 
     function insertModalData(element) {
+        console.log(element)
         const modal_title = document.getElementById('modal_title');
         const modal_symbol = document.getElementById('modal_symbol');
         const modal_appearance = document.getElementById('modal_appearance');

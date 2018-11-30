@@ -255,7 +255,8 @@ ul {
     position: relative;
 }
 
-#lan-ac .clear-styles {
+#lan-ac .clear-styles,
+.main .clear-styles {
     border: none;
     box-shadow: none;
 }
