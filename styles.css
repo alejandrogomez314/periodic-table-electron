@@ -137,11 +137,11 @@ ul {
 }
 
 .element-8 {
-    background: #fff;
+    background: #f6b93b;
 }
 
 .element-9 {
-    background: #fff;
+    background: #fad390;
 }
 
 .legend {
@@ -248,4 +248,14 @@ ul {
     color: black;
     text-decoration: none;
     cursor: pointer;
+}
+
+#lan-ac {
+    top: 30px;
+    position: relative;
+}
+
+#lan-ac .clear-styles {
+    border: none;
+    box-shadow: none;
 }

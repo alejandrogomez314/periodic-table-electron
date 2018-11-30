@@ -139,7 +139,7 @@
 
             <li data-pos="55" data-nb="132.91" class="element-3 ">CsCaesium</li>
             <li data-pos="56" data-nb="137.33" class="element-4 ">BaBarium</li>
-            <li data-pos="57-71" class="element-8">La-LuLanthanide</li>
+            <li data-pos="57-71" class="element-8">La-Lu</li>
             <li data-pos="72" data-nb="178.49" class="element-6 ">HfHafnium</li>
             <li data-pos="73" data-nb="180.95" class="element-6 ">TaTantalum</li>
 
@@ -163,7 +163,7 @@
 
             <li data-pos="87" data-nb="(223)" class="element-3 ">FrFrancium</li>
             <li data-pos="88" data-nb="(226)" class="element-4 ">RaRadium</li>
-            <li data-pos="89-103" class="element-9">Ac-LrActinide</li>
+            <li data-pos="89-103" class="element-9">Ac-Lr</li>
             <li data-pos="104" data-nb="(261)" class="element-6 ">RfRutherfodum</li>
             <li data-pos="105" data-nb="(262)" class="element-6 ">DbDubnium</li>
 
@@ -182,7 +182,49 @@
             <li data-pos="115" data-nb="(289)" class="element-7 ">UuhUnunhexium</li>
             <li data-pos="115" data-nb="(289)" class="element-0 ">UusUnunseptum</li>
             <li data-pos="115" data-nb="(289)" class="element-2 ">UuoUnunoctium</li>
+
+            <div id="lan-ac">
+                <li class="clear-styles"></li>
+                <li class="clear-styles"></li>
+                <li data-pos="57" class="element-8"></li>
+                <li data-pos="58" class="element-8"></li>
+                <li data-pos="59" class="element-8"></li>
+                <li data-pos="60" class="element-8"></li>
+                <li data-pos="61" class="element-8"></li>
+                <li data-pos="62" class="element-8"></li>
+                <li data-pos="63" class="element-8"></li>
+                <li data-pos="64" class="element-8"></li>
+                <li data-pos="65" class="element-8"></li>
+                <li data-pos="66" class="element-8"></li>
+                <li data-pos="67" class="element-8"></li>
+                <li data-pos="68" class="element-8"></li>
+                <li data-pos="69" class="element-8"></li>
+                <li data-pos="70" class="element-8"></li>
+                <li data-pos="71" class="element-8"></li>
+                <li class="clear-styles"></li>
+                <li class="clear-styles"></li>
+                <li class="clear-styles"></li>
+                <li data-pos="89" class="element-9"></li>
+                <li data-pos="90" class="element-9"></li>
+                <li data-pos="91" class="element-9"></li>
+                <li data-pos="92" class="element-9"></li>
+                <li data-pos="93" class="element-9"></li>
+                <li data-pos="94" class="element-9"></li>
+                <li data-pos="95" class="element-9"></li>
+                <li data-pos="96" class="element-9"></li>
+                <li data-pos="97" class="element-9"></li>
+                <li data-pos="98" class="element-9"></li>
+                <li data-pos="99" class="element-9"></li>
+                <li data-pos="100" class="element-9"></li>
+                <li data-pos="101" class="element-9"></li>
+                <li data-pos="102" class="element-9"></li>
+                <li data-pos="103" class="element-9"></li>
+            </div>
         </ul>
+
+
+
+
 
         <div class="legend">
             <ul class="list-2">
@@ -205,7 +247,6 @@
     </div>
 
     <div id="myModal" class="modal">
-
         <!-- Modal content -->
         <div class="modal-content">
             <span class="close">&times;</span>
@@ -230,140 +271,10 @@
                 <li>
                     <strong>Crystal Structure:</strong> <span id="modal_crystal_structure"></span>
                 </li>
-
             </ul>
-
         </div>
-
     </div>
-
-
-    <script type="text/javascript" src="jquery-3.3.1.js"></script>
     <script type="text/javascript" src="script.js"></script>
-
-    <script>
-        const fs = require('fs');
-        fs.readFile('./data/periodic_table_adjustedWeights.json', (err, data) => {
-            if (err) throw err;
-            let parsedJson = JSON.parse(data);
-            let selector;
-            let elementDiv
-            for (let i = 1; i <= 118; i++) {
-                selector = "li[data-pos='" + i + "']";
-                elementDiv = document.querySelector(selector);
-
-                if (elementDiv != null) {
-                    elementDiv.setAttribute('data-nb', parsedJson[i - 1].atomic_weight1);
-                    elementDiv.innerHTML = parsedJson[i - 1].symbol;
-                }
-            }
-        });
-
-
-        // Get the modal
-        var modal = document.getElementById('myModal');
-
-        // Get the button that opens the modal
-        const elementList = document.querySelectorAll("ul.main > li");
-
-        // Get the  element that closes the modal
-        var span = document.getElementsByClassName("close")[0];
-
-        // When the user clicks on the button, open the modal 
-        elementList.forEach(element => {
-            element.addEventListener('click', AddModalData);
-        });
-
-        // When the user clicks on  (x), close the modal
-        span.onclick = function () {
-            modal.style.display = "none";
-        }
-
-        // When the user clicks anywhere outside of the modal, close it
-        window.onclick = function (event) {
-            if (event.target == modal) {
-                modal.style.display = "none";
-            }
-        }
-
-        /** 
-         * Adds data to the modal
-         * @function 
-         * @param {string} element - an html string with the target element data-pos
-         */
-
-        function AddModalData(element) {
-            modal.style.display = "block";
-            const el = Number(element.target.getAttribute('data-pos'));
-            return queryElementData(el)
-                .then(insertModalData)
-                .catch(logError);
-
-        }
-
-        /** 
-         * Queries json data for a matching element
-         * @function 
-         * @param {string} matchingElement - the Element we want to match, using it\'s atomic weight
-         */
-
-        function queryElementData(matchingElement) {
-            return new Promise((resolve, reject) => {
-                fs.readFile('./data/periodic_table_adjustedWeights.json', (err, data) => {
-                    if (err) reject('Cannot not read the file');
-                    let parsedJson = JSON.parse(data);
-                    let queryVal;
-                    parsedJson.map(element => {
-                        queryVal = element.atomic_number;
-                        if (queryVal === matchingElement) {
-                            resolve(element);
-                        }
-                    });
-                })
-            })
-        }
-
-        /** 
-         * Inserts matched data into the modal
-         * @function
-         * @param {object} element - the matched element we want to display
-         */
-
-        function insertModalData(element) {
-            const modal_title = document.getElementById('modal_title');
-            const modal_symbol = document.getElementById('modal_symbol');
-            const modal_appearance = document.getElementById('modal_appearance');
-            const modal_discovery = document.getElementById('modal_discovery');
-            const modal_melting_point = document.getElementById('modal_melting_point');
-            const modal_boiling_point = document.getElementById('modal_boiling_point');
-            const modal_crystal_structure = document.getElementById('modal_crystal_structure');
-
-            //check for any undefined
-            for (val in element) {
-                if (element[val] == undefined) {
-                    element[val] = "n/a";
-                }
-            }
-
-            modal_title.innerHTML = element.name;
-            modal_symbol.innerHTML = element.symbol;
-            modal_appearance.innerHTML = element.appearance;
-            modal_discovery.innerHTML = element.discovery;
-            modal_melting_point.innerHTML = element.melting_point;
-            modal_boiling_point.innerHTML = element.boiling_point;
-            modal_crystal_structure.innerHTML = element.crystal_structure;
-        }
-
-        /** 
-         * Logs errors
-         * @function
-         * @param {string} error - the error to log
-         */
-
-        function logError(error) {
-            console.error(error);
-        }
-    </script>
 </body>
 
 </html>
