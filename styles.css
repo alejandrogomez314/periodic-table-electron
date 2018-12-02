@@ -172,7 +172,7 @@ ul {
 
 .legend .list-2 {
     margin-left: 40px;
-    width: 200px;
+    width: 300px;
 }
 
 .legend .list-1 li {
@@ -183,23 +183,20 @@ ul {
     margin-top: 2px;
 }
 
-.legend .list-1 span {
-    border: 1px solid black;
-    display: inline-block;
-    padding: 3px;
-    width: 20px;
-    text-align: center;
-    height: 20px;
-    margin-right: 5px;
-}
-
 .legend .list-2 li {
     margin: 2px;
     padding: 3px;
     float: left;
     border: 1px solid rgba(0, 0, 0, 0.2);
-    width: 48%;
+    width: 100%;
     cursor: pointer;
+}
+
+.text-input {
+    height: 40px;
+    width: 100px;
+    float: right;
+    font-size: 20px
 }
 
 /* The Modal (background) */

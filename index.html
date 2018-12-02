@@ -229,17 +229,17 @@
         <div class="legend">
             <ul class="list-2">
                 <div class="slidecontainer">
-                    <h3>Boiling Point</h3><input type="range" min="1" max="100" value="50" class="slider" id="myRange"
-                        onchange="updateTextInput(this.value);">
-                    <input type="text" id="textInput" value="">
+                    <input type="number" id="txtBoilingPoint" value="0" class="text-input"> <br />
+                    <h3>Boiling Point</h3><input type="range" min="-300" max="3500" value="1" class="slider" id="myRange"
+                        onchange="updateBoilingPoint(this.value);">
+
 
                 </div>
                 <div class="slidecontainer">
+                    <input type="number" id="txtMeltingPoint" value="0" class="text-input">
+                    <h3>Melting Point</h3><input type="range" min="-300" max="3500" value="1" class="slider" id="myRange"
+                        onchange="updateMeltingPoint(this.value);">
 
-
-                    <h3>Melting Point</h3><input type="range" min="1" max="100" value="50" class="slider" id="myRange"
-                        onchange="updateTextInput1(this.value);">
-                    <input type="text" id="textInput1" value="">
                 </div>
             </ul>
         </div>
@@ -275,6 +275,17 @@
         </div>
     </div>
     <script type="text/javascript" src="script.js"></script>
+    <script>
+        function updateBoilingPoint(val) {
+            document.getElementById('txtBoilingPoint').value = val;
+
+        }
+
+        function updateMeltingPoint(val) {
+            document.getElementById('txtMeltingPoint').value = val;
+
+        }
+    </script>
 </body>
 
 </html>
