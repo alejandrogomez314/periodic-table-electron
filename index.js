@@ -10,18 +10,22 @@ const fs = require('fs');
 // be closed automatically when the JavaScript object is garbage collected.
 let win;
 
+
+// Creates a Window.
 function createWindow() {
-    // Create the browser window.
+    // Create the browser window
     win = new BrowserWindow({
         width: 1200,
         height: 600,
 
     })
 
-    // and load the index.html of the app.
+    /** and load the index.html of the app.
+     */
     win.loadFile('index.html');
 
-    // Emitted when the window is closed.
+    /** Emitted when the window is closed.
+     */
     win.on('closed', () => {
         // Dereference the window object, usually you would store windows
         // in an array if your app supports multi windows, this is the time
@@ -89,38 +93,38 @@ function createWindow() {
     if (process.platform === 'darwin') {
         let name = app.getName();
         template.unshift({
-            label: 'elements',
-            submenu: [{
-                    role: 'about'
-                },
-                {
-                    type: 'separator'
-                },
-                {
-                    role: 'services',
-                    submenu: []
-                },
-                {
-                    type: 'separator'
-                },
-                {
-                    role: 'hide'
-                },
-                {
-                    role: 'hideothers'
-                },
-                {
-                    role: 'unhide'
-                },
-                {
-                    type: 'separator'
-                },
-                {
-                    role: 'quit'
-                }
-            ]
-        })
-        // Window menu.
+                label: 'elements',
+                submenu: [{
+                        role: 'about'
+                    },
+                    {
+                        type: 'separator'
+                    },
+                    {
+                        role: 'services',
+                        submenu: []
+                    },
+                    {
+                        type: 'separator'
+                    },
+                    {
+                        role: 'hide'
+                    },
+                    {
+                        role: 'hideothers'
+                    },
+                    {
+                        role: 'unhide'
+                    },
+                    {
+                        type: 'separator'
+                    },
+                    {
+                        role: 'quit'
+                    }
+                ]
+            })
+            // Window menu.
         template[3].submenu = [{
             label: 'Learn more',
             click() {
